@@ -1,0 +1,59 @@
+/*
+  Name: Ariane Apigo
+  Date: 2019 October 26
+  Section: AA / Chao Hsu Lin & Austin Jenchi
+
+  This is the styles.css file for my
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+
+#logo {
+  height: 100px;
+}
+
+h1, h2 {
+  font-family: "Fredericka the Great", sans-serif;
+  color: #5a92a1;
+}
+
+h1 {
+  font-size: 45px;
+  font-weight: 300;
+  display: inline;
+  margin-left: 30px;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: lighter;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #5a92a1;
+  margin-bottom: 10px;
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  background: #BBDEE6;
+}
+
+section {
+  background: #E9F4F7;
+  padding: 15px;
+  padding-top: 5px;
+  margin: 10px;
+  border-radius: 5px 25px;
+}
+
+#films {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+article {
+  width: 25%;
+  margin: auto;
+  text-align: justify;
+}
