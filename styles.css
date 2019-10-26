@@ -16,7 +16,7 @@
 
 h1, h2 {
   font-family: "Fredericka the Great", sans-serif;
-  color: #5a92a1;
+  color: #5A92A1;
 }
 
 h1 {
@@ -30,7 +30,7 @@ h2 {
   font-size: 25px;
   font-weight: lighter;
   padding-bottom: 5px;
-  border-bottom: 1px solid #5a92a1;
+  border-bottom: 1px solid #5A92A1;
   margin-bottom: 10px;
 }
 
@@ -54,12 +54,19 @@ section {
 
 article {
   width: 45%;
-  margin: auto;
+  height: 200px;
   text-align: justify;
+  padding: 10px;
+  border: #5A92A1 dotted 1px;
+  margin: auto;
+  display: inline-flex;
+}
+
+h3 {
+  margin: 0px;
 }
 
 .description {
-  display: inline-flex;
 }
 
 .poster {

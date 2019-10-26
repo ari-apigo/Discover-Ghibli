@@ -59,7 +59,7 @@
   window.addEventListener("load", init);
 
   function init() {
-    processFilmTitles();
+    processFilmDisplays();
   }
 
   function getFilms() {
@@ -71,24 +71,23 @@
     .catch(handleError);
   }
 
-  function processFilmTitles() {
+  function processFilmDisplays() {
     let filmsDiv = document.getElementById("films");
     for (let i = 0; i < filmsjson.length; i++) {
       let newFilm = document.createElement("article");
+      let container = document.createElement("div");
       let title = document.createElement("h3");
       title.textContent = filmsjson[i].title + " (" + filmsjson[i]["release_date"] + ")";
-      newFilm.appendChild(title);
-      let container = document.createElement("div");
-      container.classList.add("description");
+      container.appendChild(title);
       let description = document.createElement("p");
-      description.textContent = filmsjson[i].description;
+      description.textContent = filmsjson[i].description.substring(0,300) + "...";
       container.appendChild(description);
       let poster = document.createElement("img");
       poster.classList.add("poster");
       poster.src = getFilmPoster(filmsjson[i].title);
       poster.alt = filmsjson[i].title;
-      container.appendChild(poster);
       newFilm.appendChild(container);
+      newFilm.appendChild(poster);
       filmsDiv.appendChild(newFilm);
     }
   }
