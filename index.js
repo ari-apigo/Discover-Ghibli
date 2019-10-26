@@ -54,7 +54,7 @@
       ],
       "url": "https://ghibliapi.herokuapp.com/films/12cfb892-aac0-4c5b-94af-521852e46d6a"
     }
-  ]
+  ];
 
   window.addEventListener("load", init);
 
@@ -72,17 +72,33 @@
   }
 
   function processFilmTitles() {
-    let filmsSection = document.getElementById("films");
+    let filmsDiv = document.getElementById("films");
     for (let i = 0; i < filmsjson.length; i++) {
       let newFilm = document.createElement("article");
       let title = document.createElement("h3");
-      title.textContent = filmsjson[i].title;
+      title.textContent = filmsjson[i].title + " (" + filmsjson[i]["release_date"] + ")";
       newFilm.appendChild(title);
+      let container = document.createElement("div");
+      container.classList.add("description");
       let description = document.createElement("p");
       description.textContent = filmsjson[i].description;
-      newFilm.appendChild(description);
-      filmsSection.appendChild(newFilm);
+      container.appendChild(description);
+      let poster = document.createElement("img");
+      poster.classList.add("poster");
+      poster.src = getFilmPoster(filmsjson[i].title);
+      poster.alt = filmsjson[i].title;
+      container.appendChild(poster);
+      newFilm.appendChild(container);
+      filmsDiv.appendChild(newFilm);
     }
+  }
+
+  function getFilmPoster(title) {
+    /* The following site was consulted:
+     * https://stackoverflow.com/questions/5963182/how-to-remove-spaces-from-a-string-using-javascript
+     */
+    title = title.replace(/\s+/g, "");
+    return "img/" + title + ".jpg";
   }
 
 })();
