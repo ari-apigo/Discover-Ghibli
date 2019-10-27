@@ -59,7 +59,7 @@
   window.addEventListener("load", init);
 
   function init() {
-    processFilmDisplays();
+    getFilms();
   }
 
   function getFilms() {
@@ -67,31 +67,33 @@
     fetch(url)
     .then(checkStatus)
     .then(resp => resp.json())
-    .then(processData)
+    .then(processFilmDisplays)
     .catch(handleError);
   }
 
-  function processFilmDisplays() {
+  function checkStatus(response) {
+    if (!response.ok) {
+      throw Error("Error in request: " + response.statusText);
+    }
+    return response;
+  }
+
+  function processFilmDisplays(responseData) {
     let filmsDiv = document.getElementById("films");
-    for (let i = 0; i < filmsjson.length; i++) {
+    for (let i = 0; i < responseData.length; i++) {
       let newFilm = document.createElement("article");
-      let discoverFilm = document.createElement("a");
-      discoverFilm.href = "explore.html";
-      discoverFilm.onclick = "getFilmId()";
-      discoverFilm.id = i;
       let container = document.createElement("div");
       let title = document.createElement("h3");
-      title.textContent = filmsjson[i].title + " (" + filmsjson[i]["release_date"] + ")";
+      title.textContent = responseData[i].title + " (" + responseData[i]["release_date"] + ")";
       container.appendChild(title);
       let description = document.createElement("p");
-      description.textContent = filmsjson[i].description.substring(0,300) + "...";
+      description.textContent = responseData[i].description;
       container.appendChild(description);
       let poster = document.createElement("img");
       poster.classList.add("poster");
-      poster.src = getFilmPoster(filmsjson[i].title);
-      poster.alt = filmsjson[i].title;
-      discoverFilm.appendChild(container)
-      newFilm.appendChild(discoverFilm);
+      poster.src = getFilmPoster(responseData[i].title);
+      poster.alt = responseData[i].title;
+      newFilm.appendChild(container)
       newFilm.appendChild(poster);
       filmsDiv.appendChild(newFilm);
     }
@@ -105,11 +107,8 @@
     return "img/" + title + ".jpg";
   }
 
-  function discoverFilm() {
-    let main = document.querySelector("main");
-    let section = document.createElement("section");
-    let title = document.createElement("h2");
-    title.textContent =
+  function handleError(error) {
+    alert("Woops! Guess that's gonna stay undiscovered... " + error);
   }
 
 })();
