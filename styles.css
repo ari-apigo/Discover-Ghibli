@@ -14,7 +14,7 @@
   height: 100px;
 }
 
-h1, h2 {
+h1, h2, select {
   font-family: "Fredericka the Great", sans-serif;
   color: #5A92A1;
 }
@@ -45,6 +45,12 @@ section {
   padding-top: 5px;
   margin: 10px;
   border-radius: 5px 25px;
+}
+
+select {
+  background: #E9F4F7;
+  border: none;
+  font-size: 25px;
 }
 
 #films {
