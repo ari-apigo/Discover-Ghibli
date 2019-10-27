@@ -52,6 +52,11 @@ section {
   flex-wrap: wrap;
 }
 
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 article {
   width: 45%;
   height: 200px;
@@ -60,13 +65,11 @@ article {
   border: #5A92A1 dotted 1px;
   margin: auto;
   display: inline-flex;
+  overflow: auto;
 }
 
 h3 {
   margin: 0px;
-}
-
-.description {
 }
 
 .poster {

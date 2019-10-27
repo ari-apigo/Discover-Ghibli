@@ -75,6 +75,10 @@
     let filmsDiv = document.getElementById("films");
     for (let i = 0; i < filmsjson.length; i++) {
       let newFilm = document.createElement("article");
+      let discoverFilm = document.createElement("a");
+      discoverFilm.href = "explore.html";
+      discoverFilm.onclick = "getFilmId()";
+      discoverFilm.id = i;
       let container = document.createElement("div");
       let title = document.createElement("h3");
       title.textContent = filmsjson[i].title + " (" + filmsjson[i]["release_date"] + ")";
@@ -86,7 +90,8 @@
       poster.classList.add("poster");
       poster.src = getFilmPoster(filmsjson[i].title);
       poster.alt = filmsjson[i].title;
-      newFilm.appendChild(container);
+      discoverFilm.appendChild(container)
+      newFilm.appendChild(discoverFilm);
       newFilm.appendChild(poster);
       filmsDiv.appendChild(newFilm);
     }
@@ -98,6 +103,13 @@
      */
     title = title.replace(/\s+/g, "");
     return "img/" + title + ".jpg";
+  }
+
+  function discoverFilm() {
+    let main = document.querySelector("main");
+    let section = document.createElement("section");
+    let title = document.createElement("h2");
+    title.textContent =
   }
 
 })();
