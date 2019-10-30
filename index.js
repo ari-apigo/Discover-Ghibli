@@ -27,15 +27,16 @@
   function getFilms() {
     let url = BASE_URL + "films";
     fetch(url)
-    .then(checkStatus)
-    .then(resp => resp.json())
-    .then(processFilms)
-    .catch(handleError);
+      .then(checkStatus)
+      .then(resp => resp.json())
+      .then(processFilms)
+      .catch(handleError);
   }
 
   /**
    * Checks status of the request to the API.
    * @param {Response} response - result of fetching from the API
+   * @return {Response} response - returned when successfully connects request to API
    */
   function checkStatus(response) {
     if (!response.ok) {
@@ -49,7 +50,11 @@
    * @param {Response} error - details regarding reason for failed API request
    */
   function handleError(error) {
-    alert("Woops! Guess that's gonna stay undiscovered... " + error);
+    let display = document.getElementById("display");
+    let alert = document.createElement("p");
+    alert.textContent = "Woops! Guess that's gonna stay undiscovered... " + error;
+    alert.classList.add("alert");
+    display.appendChild(alert);
   }
 
   /**
@@ -71,7 +76,7 @@
       poster.classList.add("poster");
       poster.src = getFilmPoster(responseData[i].title);
       poster.alt = responseData[i].title;
-      newFilm.appendChild(container)
+      newFilm.appendChild(container);
       newFilm.appendChild(poster);
       display.appendChild(newFilm);
     }
@@ -83,7 +88,8 @@
    * @return {string} - image file path
    */
   function getFilmPoster(title) {
-    /* The following site was consulted:
+    /*
+     * The following site was consulted:
      * https://stackoverflow.com/questions/5963182/how-to-remove-spaces-from-a-string-using-javascript
      */
     title = title.replace(/\s+/g, "");

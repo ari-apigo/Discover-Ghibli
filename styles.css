@@ -57,6 +57,10 @@ section, article {
   justify-content: space-evenly;
 }
 
+.alert {
+  font-style: italic;
+}
+
 article {
   width: 45%;
   height: 200px;
