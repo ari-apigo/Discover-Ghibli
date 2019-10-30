@@ -73,7 +73,7 @@
       poster.alt = responseData[i].title;
       newFilm.appendChild(container)
       newFilm.appendChild(poster);
-      filmsDiv.appendChild(newFilm);
+      display.appendChild(newFilm);
     }
   }
 
