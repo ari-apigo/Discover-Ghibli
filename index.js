@@ -3,7 +3,9 @@
  *  Date: 2019 October 26
  *  Section: AA / Chao Hsu Lin & Austin Jenchi
  *
- *  This is the index.js file for my
+ *  This is the index.js file for my Discover Ghibli page. It fetches information from the
+ *  Studio Ghibli API (https://ghibliapi.herokuapp.com) and manipulates the DOM to display
+ *  this information on the page.
  */
 
 "use strict";
@@ -12,28 +14,29 @@
 
   window.addEventListener("load", init);
 
+  /**
+   * Loads the film data from the API onto the page.
+   */
   function init() {
     getFilms();
-    document.getElementById("ghibliCategories").addEventListener("change", updateDisplay);
   }
 
-  function updateDisplay() {
-    if (this.value === "films") {
-      getFilms();
-    } else if (this.value === "people") {
-      
-    }
-  }
-
+  /**
+   * Fetches the film data from the API.
+   */
   function getFilms() {
     let url = BASE_URL + "films";
     fetch(url)
     .then(checkStatus)
     .then(resp => resp.json())
-    .then(processFilmDisplays)
+    .then(processFilms)
     .catch(handleError);
   }
 
+  /**
+   * Checks status of the request to the API.
+   * @param {Response} response - result of fetching from the API
+   */
   function checkStatus(response) {
     if (!response.ok) {
       throw Error("Error in request: " + response.statusText);
@@ -41,8 +44,20 @@
     return response;
   }
 
-  function processFilmDisplays(responseData) {
-    let filmsDiv = document.getElementById("films");
+  /**
+   * Shows alert with error details when API request fails.
+   * @param {Response} error - details regarding reason for failed API request
+   */
+  function handleError(error) {
+    alert("Woops! Guess that's gonna stay undiscovered... " + error);
+  }
+
+  /**
+   * Processes and formats API data for display on the page.
+   * @param {Response} responseData - data from API
+   */
+  function processFilms(responseData) {
+    let display = document.getElementById("display");
     for (let i = 0; i < responseData.length; i++) {
       let newFilm = document.createElement("article");
       let container = document.createElement("div");
@@ -62,16 +77,17 @@
     }
   }
 
+  /**
+   * Contracts film title from API data to match image file names.
+   * @param {string} title - film title from API data
+   * @return {string} - image file path
+   */
   function getFilmPoster(title) {
     /* The following site was consulted:
      * https://stackoverflow.com/questions/5963182/how-to-remove-spaces-from-a-string-using-javascript
      */
     title = title.replace(/\s+/g, "");
     return "img/" + title + ".jpg";
-  }
-
-  function handleError(error) {
-    alert("Woops! Guess that's gonna stay undiscovered... " + error);
   }
 
 })();
