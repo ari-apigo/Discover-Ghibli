@@ -1,0 +1,85 @@
+/*
+  Name: Ariane Apigo
+  Date: 2019 October 26
+  Section: AA / Chao Hsu Lin & Austin Jenchi
+
+  This is the styles.css file for my Discover Ghibli page. It gives the page a consistent look
+  and formats the display of films uniformly.
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+
+#logo {
+  height: 100px;
+}
+
+h1, h2, a {
+  font-family: "Fredericka the Great", sans-serif;
+  color: #5A92A1;
+}
+
+h1 {
+  font-size: 45px;
+  font-weight: 300;
+  display: inline;
+  margin-left: 30px;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: lighter;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #5A92A1;
+  margin-bottom: 10px;
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  background: #BBDEE6;
+}
+
+a {
+  text-decoration: none;
+}
+
+section {
+  background: #E9F4F7;
+  padding: 15px;
+  padding-top: 5px;
+  border-radius: 5px 25px;
+}
+
+section, article {
+  margin: 10px;
+}
+
+#display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.alert {
+  font-style: italic;
+}
+
+article {
+  width: 45%;
+  height: 200px;
+  text-align: justify;
+  padding: 10px;
+  border: #5A92A1 dotted 1px;
+  display: inline-flex;
+  overflow: auto;
+}
+
+h3 {
+  margin: 0px;
+}
+
+.poster {
+  width: 25%;
+  margin-left: 20px;
+}
