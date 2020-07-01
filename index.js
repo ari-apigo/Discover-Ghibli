@@ -1,7 +1,6 @@
 /*
  *  Name: Ariane Apigo
  *  Date: 2019 October 26
- *  Section: AA / Chao Hsu Lin & Austin Jenchi
  *
  *  This is the index.js file for my Discover Ghibli page. It fetches information from the
  *  Studio Ghibli API (https://ghibliapi.herokuapp.com) and manipulates the DOM to display
